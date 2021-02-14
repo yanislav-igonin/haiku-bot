@@ -1,6 +1,6 @@
-# typescript-telegram-bot-template :robot:
+# haiku-bot :robot:
 
-![License](https://img.shields.io/github/license/yanislav-igonin/typescript-telegram-bot-template.svg) ![Issues](https://img.shields.io/github/issues/yanislav-igonin/typescript-telegram-bot-template.svg) ![forks](https://img.shields.io/github/forks/yanislav-igonin/typescript-telegram-bot-template) ![stars](https://img.shields.io/github/stars/yanislav-igonin/typescript-telegram-bot-template) ![size](https://img.shields.io/github/repo-size/yanislav-igonin/typescript-telegram-bot-template)
+![License](https://img.shields.io/github/license/yanislav-igonin/haiku-bot.svg) ![Issues](https://img.shields.io/github/issues/yanislav-igonin/haiku-bot.svg) ![forks](https://img.shields.io/github/forks/yanislav-igonin/haiku-bot) ![stars](https://img.shields.io/github/stars/yanislav-igonin/haiku-bot) ![size](https://img.shields.io/github/repo-size/yanislav-igonin/haiku-bot)
 
 This is template project for my telegram bots written in typescript.
 
@@ -11,9 +11,9 @@ I'm tired of constantly creating telegram bots from scratch, installing linter, 
 ## Installation :inbox_tray:
 
 ```bash
-> git clone https://github.com/yanislav-igonin/typescript-telegram-bot-template.git
+> git clone https://github.com/yanislav-igonin/haiku-bot.git
 
-> cd typescript-telegram-bot-template
+> cd haiku-bot
 
 > npm i
 
@@ -29,4 +29,4 @@ If there is a problem please create a bug report in the issues section.
 
 ## License :scroll:
 
-Licensed under [MIT License](https://github.com/yanislav-igonin/typescript-telegram-bot-template/blob/master/LICENSE)
+Licensed under [MIT License](https://github.com/yanislav-igonin/haiku-bot/blob/master/LICENSE)
