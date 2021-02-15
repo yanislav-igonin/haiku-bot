@@ -75,7 +75,7 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@master
       env:
-        REGISTRY: docker.pkg.github.com/yanislav-igonin/haiku-bot
+        REGISTRY: docker.pkg.github.com/yanislav-igonin/haiku-bot/haiku-bot
         SERVICE_NAME: haiku-bot_app
       with:
         host: ${{ secrets.VPS_HOST }}
