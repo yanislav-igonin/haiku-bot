@@ -31,7 +31,7 @@ services:
         traefik.http.services.haiku-bot.loadbalancer.server.port: ${WEBHOOK_PORT}
 
         traefik.http.routers.haiku-bot-secure.entrypoints: "https"
-        traefik.http.routers.haiku-bot-secure.rule: "Host(`${WEBHOOK_PATH}`) && PathPrefix(`${WEBHOOK_PATH}`)"
+        traefik.http.routers.haiku-bot-secure.rule: "Host(`${WEBHOOK_HOST}`) && PathPrefix(`${WEBHOOK_PATH}`)"
         traefik.http.routers.haiku-bot-secure.tls: "true"
         traefik.http.routers.haiku-bot-secure.service: "haiku-bot"
 
