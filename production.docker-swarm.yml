@@ -10,7 +10,6 @@ services:
       - WEBHOOK_HOST=${WEBHOOK_HOST}
       - WEBHOOK_PORT=${WEBHOOK_PORT}
       - WEBHOOK_PATH=${WEBHOOK_PATH}
-      - IS_WEBHOOK_DISABLED=false
     deploy:
       replicas: 1
       update_config:
@@ -27,7 +26,7 @@ services:
       labels:
         traefik.enable: "true"
         traefik.docker.network: "web"
-        
+
         traefik.http.middlewares.haiku-bot-secure.stripprefix.prefixes: ${WEBHOOK_PATH}
         traefik.http.middlewares.haiku-bot-secure.stripprefix.forceSlash: false
 
