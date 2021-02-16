@@ -2,11 +2,9 @@
 
 ![License](https://img.shields.io/github/license/yanislav-igonin/haiku-bot.svg) ![Issues](https://img.shields.io/github/issues/yanislav-igonin/haiku-bot.svg) ![forks](https://img.shields.io/github/forks/yanislav-igonin/haiku-bot) ![stars](https://img.shields.io/github/stars/yanislav-igonin/haiku-bot) ![size](https://img.shields.io/github/repo-size/yanislav-igonin/haiku-bot)
 
-This is template project for my telegram bots written in typescript.
+Russian haiku detector telegram bot.
 
-## Motivation :question:
-
-I'm tired of constantly creating telegram bots from scratch, installing linter, typescript, logger, etc.
+[Deployed Bot](https://t.me/haiku_russian_bot)
 
 ## Installation :inbox_tray:
 
@@ -17,9 +15,9 @@ I'm tired of constantly creating telegram bots from scratch, installing linter, 
 
 > npm i
 
-> BOT_TOKEN=... npm run dev
-OR
-> BOT_TOKEN=... docker-compose -f development.docker-compose.yml up --build
+# create .env file, copy contents of the .env.example, add your BOT_TOKEN
+
+> npm run start:dev
 ```
 
 ## Bugs :bug:
