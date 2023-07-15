@@ -6,6 +6,7 @@ const telegramConfig = {
       ? parseInt(process.env.WEBHOOK_PORT, 10)
       : 3000,
     path: process.env.WEBHOOK_PATH || '',
+    isEnabled: process.env.WEBHOOK_ENABLED === 'true',
   },
 };
 

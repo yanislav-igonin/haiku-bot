@@ -1,6 +1,6 @@
 name: Release
 
-on: 
+on:
   release:
     types: [released]
 
@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Use Node.js 14
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: 14.x
-    - name: Install dependencies
-      run: npm ci
-    - name: Lint
-      run: npm run lint
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
 
   build:
     needs: lint
@@ -26,21 +26,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Use Node.js 14
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: 14.x
-    - name: Install dependencies
-      run: npm ci
-    - name: Build
-      run: npm run build
-    - name: Upload build
-      uses: actions/upload-artifact@v2
-      with:
-        name: dist
-        path: dist
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
 
   release:
     needs: build
@@ -62,7 +62,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: yanislav-igonin/haiku-bot/haiku-bot
-          dockerfile: production.Dockerfile
+          dockerfile: Dockerfile
           tags: latest, ${{ github.event.release.tag_name }}
           build_args: CI_COMMIT_TAG=${{ github.event.release.tag_name }}
 
@@ -72,17 +72,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      env:
-        REGISTRY: docker.pkg.github.com/yanislav-igonin/haiku-bot/haiku-bot
-        SERVICE_NAME: haiku-bot_app
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_SSH_USERNAME }}
-        key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-        script: |
-          docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
-          docker pull ${{ env.REGISTRY }}:${{ github.event.release.tag_name }}
-          docker pull ${{ env.REGISTRY }}:latest
-          docker service update --image ${{ env.REGISTRY }}:${{ github.event.release.tag_name }} ${{ env.SERVICE_NAME }}
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        env:
+          REGISTRY: docker.pkg.github.com/yanislav-igonin/haiku-bot/haiku-bot
+          SERVICE_NAME: haiku-bot_app
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_SSH_USERNAME }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          script: |
+            docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
+            docker pull ${{ env.REGISTRY }}:${{ github.event.release.tag_name }}
+            docker pull ${{ env.REGISTRY }}:latest
+            docker service update --image ${{ env.REGISTRY }}:${{ github.event.release.tag_name }} ${{ env.SERVICE_NAME }}

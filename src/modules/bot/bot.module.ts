@@ -1,5 +1,4 @@
 import { Telegraf, Context } from 'telegraf';
-import * as ngrok from 'ngrok';
 
 import * as Config from '../../common/config';
 import { LoggerModule } from '../logger.module';
@@ -34,18 +33,7 @@ export class BotModule {
   }
 
   async launch() {
-    const { appConfig, telegramConfig } = this.config;
-
-    let host;
-    if (appConfig.env === 'development') {
-      host = await ngrok.connect(telegramConfig.webhook.port);
-    } else {
-      // eslint-disable-next-line prefer-destructuring
-      host = telegramConfig.webhook.host;
-    }
-
-    const url = `${host}${telegramConfig.webhook.path}`;
-    await this.bot.telegram.setWebhook(url);
+    await this.bot.launch();
     LoggerModule.info('bot - online');
   }
 }
