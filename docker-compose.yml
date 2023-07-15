@@ -2,6 +2,7 @@ version: "3.7"
 services:
   app:
     image: docker.pkg.github.com/yanislav-igonin/haiku-bot/haiku-bot:latest
+    container_name: haiku-bot
     environment:
       - NODE_ENV=production
       - BOT_TOKEN=${BOT_TOKEN}
